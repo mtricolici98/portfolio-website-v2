@@ -1,14 +1,29 @@
 [package]
-name = "trunk-template"
-version = "0.1.0"
+name = "portfolio-website-v2"
+version = "1.0.0"
 edition = "2021"
-description = "Template for starting a Yew project using Trunk"
+description = "Portfolio Website focused on PowerPoint Presentations"
 readme = "README.md"
-repository = "https://github.com/yewstack/yew-trunk-minimal-template"
-license = "MIT OR Apache-2.0"
-keywords = ["yew", "trunk"]
+repository = "https://github.com/mtricolici98/portfolio-website-v2"
+license = "MIT"
+keywords = ["portfolio", "power-point"]
 categories = ["gui", "wasm", "web-programming"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
+dark-light = "1.0.0"
 yew = { version="0.20", features=["csr"] }
+yew-router = "0.17"
+js-sys = "0.3"
+wasm-bindgen = "0.2"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+  'HtmlCanvasElement',
+  'WebGlBuffer',
+  'WebGlProgram',
+  'WebGlRenderingContext',
+  'WebGlShader',
+  'WebGlUniformLocation',
+]

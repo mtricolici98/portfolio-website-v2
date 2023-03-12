@@ -1,11 +1,3 @@
-# Yew Trunk Template
-
-This is a fairly minimal template for a Yew app that's built with [Trunk].
-
-## Usage
-
-For a more thorough explanation of Trunk and its features, please head over to the [repository][trunk].
-
 ### Installation
 
 If you don't already have it installed, it's time to install Rust: <https://www.rust-lang.org/tools/install>.
@@ -31,6 +23,12 @@ That's it, we're done!
 
 ```bash
 trunk serve
+```
+
+Also run 
+
+```bash
+npx tailwindcss -i ./static/input.css -o ./static/tailwind.css --watch 
 ```
 
 Rebuilds the app whenever a change is detected and runs a local server to host it.

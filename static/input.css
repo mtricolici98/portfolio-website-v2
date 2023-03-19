@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-main {
+  background-color: #f6eee8;
+}
+
+.text-main {
+  color: #6c3d36;
+}
+
+.text-accent {
+  color: #d39e87;
+}
+
+.button-main:hover {
+  color: #95b192;
+}

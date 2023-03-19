@@ -7,8 +7,10 @@ use crate::{routed::RouterMain, components::navigation::top_nav::Navigation};
 pub fn app() -> Html {
     html! {
         <main>
+        <div class="bg-main">
             <Navigation />
             <RouterMain />
+        </div>
         </main>
     }
 }

@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::components::{other::misc::{AboutMe, Pricing}, home::Home};
+use crate::components::{other::{misc::{AboutMe, Pricing}, gallery::{GalleryGrid, GalleryGridProps, Gallery}}, home::Home};
 
 
 #[derive(Clone, Routable, PartialEq)]
@@ -26,8 +26,8 @@ fn route_switch(routes: Route) -> Html {
         Route::About => html! {
             <AboutMe />
         },
-        Route::Pricing => html! {
-            <Pricing />
+        Route::Gallery => html! {
+            <Gallery/>
         },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
         _ =>  html! {

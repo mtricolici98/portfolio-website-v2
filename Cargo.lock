@@ -943,6 +943,7 @@ name = "portfolio-website-v2"
 version = "1.0.0"
 dependencies = [
  "dark-light",
+ "gloo",
  "js-sys",
  "wasm-bindgen",
  "web-sys",

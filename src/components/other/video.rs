@@ -46,7 +46,6 @@ pub fn VideoPlayer(props: &VideoPlayerProps) -> Html {
                     let some_player = some_player.dyn_into::<web_sys::HtmlMediaElement>().unwrap();
                     let new_progress = some_player.current_time() / some_player.duration();
                     progress.set((new_progress * 100.0) as u32 as i32);
-                    log!{"Set progress to", *progress};
                 }, 
                 _ => {}
             }

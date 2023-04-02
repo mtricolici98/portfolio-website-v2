@@ -131,7 +131,7 @@ pub fn GalleryElement(props: &GalleryGridElement) -> Html {
         <a _href="link" class="cursor-pointer" {onclick}>
             <figure>
                 <img class="aspect-video transition-all duration-300 rounded-lg
-                 cursor-pointer filter saturate-[.25] hover:saturate-100" src={main_image_url}/>
+                 cursor-pointer" src={main_image_url}/>
                 <figcaption class="p-4">
                     <p class="text-lg mb-4 font-bold leading-relaxed text-accent">
                         {main_text}

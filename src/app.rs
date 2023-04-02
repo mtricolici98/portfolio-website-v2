@@ -6,7 +6,7 @@ use crate::{routed::RouterMain, components::{navigation::top_nav::Navigation, ot
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
-        <main class="flex flex-col bg-main h-screen">
+        <main class="flex flex-col bg-main min-h-screen">
             <section class="flex-1 grow-0">
                 <Navigation />
             </section>

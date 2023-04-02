@@ -5,7 +5,11 @@ module.exports = {
     './index.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      saturate: {
+        25: '.25',
+      }
+    },
   },
   plugins: [
   ]

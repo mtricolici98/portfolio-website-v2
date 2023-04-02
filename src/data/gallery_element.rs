@@ -1,3 +1,5 @@
+use std::collections::{HashMap, BTreeMap};
+
 #[derive(PartialEq, Clone, Debug)]
 pub struct GalleryElementData {
     pub name: String,
@@ -6,6 +8,16 @@ pub struct GalleryElementData {
     pub images_url: Vec<String>,
     pub video_url: Option<String>,
 }
+
+
+#[derive(PartialEq, Clone, Debug, Eq, Hash, PartialOrd, Ord)]
+pub struct GalleryElementsCategory {
+    pub name: String,
+    pub description: String,
+    pub price: String,
+}
+
+
 
 
 
@@ -47,4 +59,36 @@ pub fn get_gallery_data() -> Vec<GalleryElementData> {
             video_url: Some(String::from("img/gallery/browser-like.webm")),
         },
     ]
+}
+
+
+
+pub fn get_gallery_data_map() -> BTreeMap<GalleryElementsCategory, Vec<GalleryElementData>> {
+    let map:BTreeMap<GalleryElementsCategory, Vec<GalleryElementData>> = BTreeMap::from(
+        [
+            (
+                GalleryElementsCategory{
+                     name: String::from("Simple"),
+                     description: String::from("Well thought out text, image and colour combinations"),
+                     price: String::from("1.5$/slide")
+                },
+                get_gallery_data()
+            ),(
+                GalleryElementsCategory{
+                     name: String::from("Advanced"),
+                     description: String::from("Better animations and stuff"),
+                     price: String::from("2$/slide")
+                },
+                get_gallery_data()
+            ),(
+                GalleryElementsCategory{
+                     name: String::from("Complex"),
+                     description: String::from("Amazing complex animations and interactivity"),
+                     price: String::from("2.5$/slide")
+                },
+                get_gallery_data()
+            ),
+        ]
+    );
+    map
 }

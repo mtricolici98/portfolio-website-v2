@@ -1,3 +1,5 @@
+use std::collections::{HashMap, BTreeMap};
+
 use gloo_console::log;
 use wasm_bindgen::JsCast;
 use web_sys::Node;
@@ -6,7 +8,7 @@ use yew_hooks::{use_toggle, UseToggleHandle};
 
 use crate::components::other::video::{VideoPlayer, VideoPlayerProps};
 use crate::components::other::modal::{Modal};
-use crate::data::gallery_element::{GalleryElementData, get_gallery_data};
+use crate::data::gallery_element::{GalleryElementData, get_gallery_data, GalleryElementsCategory, get_gallery_data_map};
 
 
 #[derive(Properties, PartialEq, Clone)]
@@ -130,17 +132,13 @@ pub fn GalleryElement(props: &GalleryGridElement) -> Html {
         <a _href="link" class="cursor-pointer" {onclick}>
             <figure>
                 <img class="aspect-video transition-all duration-300 rounded-lg
-                 cursor-pointer filter grayscale hover:grayscale-0" src={main_image_url}/>
+                 cursor-pointer filter saturate-[.25] hover:saturate-100" src={main_image_url}/>
                 <figcaption class="p-4">
-                    <p
-                        class="text-lg mb-4 font-bold leading-relaxed text-gray-800"
-                        x-text="post.title">
+                    <p class="text-lg mb-4 font-bold leading-relaxed text-accent">
                         {main_text}
                     </p>
 
-                    <small
-                        class="leading-5 text-gray-500"
-                        x-text="post.description">
+                    <small class="leading-5 text-main">
                         {desctiption}
                     </small>
                 </figcaption>
@@ -168,7 +166,7 @@ pub fn GalleryGrid(props: &GalleryGridProps)  -> Html {
     })
     .collect();
     html! {
-        <section class="lg:px-48 md:px-24 px-12" id="gallery-section">
+        <section id="gallery-section">
         <div class="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {elements}
             </div>
@@ -177,9 +175,37 @@ pub fn GalleryGrid(props: &GalleryGridProps)  -> Html {
 }
 
 
+#[derive(Properties, PartialEq, Default)]
+pub struct CategorizedGalleryGridProps {
+    pub data: BTreeMap<GalleryElementsCategory, Vec<GalleryElementData>>
+}
+
+
+#[function_component]
+pub fn CategorisedGalleryGrid(props: &CategorizedGalleryGridProps)  -> Html {
+    let inner: Html = props.data.clone().into_iter().map(|pair: (GalleryElementsCategory, Vec<GalleryElementData>)| {
+        let (cat_data, elements) = pair;
+        html!{ 
+            <li class="mb-10 ml-6">            
+                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white"></div>
+                <h3 class="flex items-center mb-1 text-lg font-semibold text-accent">{cat_data.name.clone()} <span class="bg-accent text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3">{cat_data.price.clone()}</span></h3>
+                <p class="block mb-2 text-sm font-normal leading-none text-main">{cat_data.description.clone()}</p>
+                <GalleryGrid ..GalleryGridProps{elements: elements.clone().into_iter().map(|el| {GalleryGridElement{data: el}}).collect()}/>
+            </li>
+        }
+    }).collect();
+
+    html! {
+    <ol class="relative border-l border-gray-200 lg:px-48 md:px-24 px-12">                  
+        {inner}
+    </ol>
+    }
+}
+
+
 #[function_component]
 pub fn Gallery() -> Html {
     html! {
-        <GalleryGrid ..GalleryGridProps{elements: get_gallery_data().into_iter().map(|el| {GalleryGridElement{data: el}}).collect()}/>
+        <CategorisedGalleryGrid ..CategorizedGalleryGridProps{data: get_gallery_data_map()}/>
     }
 }

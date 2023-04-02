@@ -16,7 +16,7 @@ pub fn Navigation() -> Html {
     </a>
     <ul  class="flex flex-row p-4 mt-4 rounded-lg">
         <li>
-            <a href="#" class="block py-2 lg:px-12 md:px-6 text-xl text-accent rounded">{"Contact"}</a>
+            <a href="/contact" class="block py-2 lg:px-12 md:px-6 text-xl text-accent rounded">{"Contact"}</a>
         </li>
     </ul>
     </div>

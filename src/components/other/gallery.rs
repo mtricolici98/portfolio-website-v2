@@ -1,14 +1,13 @@
-use std::collections::{HashMap, BTreeMap};
+use std::collections::{BTreeMap};
 
 use gloo_console::log;
 use wasm_bindgen::JsCast;
-use web_sys::Node;
 use yew::prelude::*;
 use yew_hooks::{use_toggle, UseToggleHandle};
 
 use crate::components::other::video::{VideoPlayer, VideoPlayerProps};
 use crate::components::other::modal::{Modal};
-use crate::data::gallery_element::{GalleryElementData, get_gallery_data, GalleryElementsCategory, get_gallery_data_map};
+use crate::data::gallery_element::{GalleryElementData, GalleryElementsCategory, get_gallery_data_map};
 
 
 #[derive(Properties, PartialEq, Clone)]
@@ -102,7 +101,7 @@ pub fn GalleryModalComponent(props: &GalleryModalProps ) -> Html {
             {
                 props.data.images_url.clone().into_iter().map(|url| {
                     html!{
-                        <img class="h-auto max-w-full" src={url}/>
+                        <img class="h-auto max-w-full shadow-md rounded-lg py-2" src={url}/>
                     }
                 }).collect::<Html>()
             }

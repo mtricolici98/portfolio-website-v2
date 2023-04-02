@@ -160,21 +160,21 @@ pub fn get_gallery_data_map() -> BTreeMap<GalleryElementsCategory, Vec<GalleryEl
                 GalleryElementsCategory{
                      name: String::from("Simple"),
                      description: String::from("Well thought out text, image and colour combinations, eye catchy but with minimal animations and interactivity"),
-                     price: String::from("1.5$/slide")
+                     price: String::from("~ 1.5$/slide")
                 },
                 get_gallery_data_simple()
             ),(
                 GalleryElementsCategory{
                      name: String::from("Advanced"),
                      description: String::from("A \"Complete package\", tailored for your need."),
-                     price: String::from("2$/slide")
+                     price: String::from("~ 2$/slide")
                 },
                 get_gallery_data_advanced()
             ),(
                 GalleryElementsCategory{
                      name: String::from("Complex"),
                      description: String::from("\"WOW IS THIS EVEN POWERPOINT ?\""),
-                     price: String::from("2.5$/slide")
+                     price: String::from("~ 2.5$/slide")
                 },
                 get_gallery_data_complex()
             ),

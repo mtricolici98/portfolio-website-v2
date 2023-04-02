@@ -1,15 +1,15 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::components::{other::{misc::{AboutMe, Pricing}, gallery::{GalleryGrid, GalleryGridProps, Gallery}}, home::Home};
+use crate::components::{other::{misc::{Contact, Pricing}, gallery::{GalleryGrid, GalleryGridProps, Gallery}}, home::Home};
 
 
 #[derive(Clone, Routable, PartialEq)]
 enum Route {
     #[at("/")]
     Home,
-    #[at("/about")]
-    About,
+    #[at("/contact")]
+    Contact,
     #[at("/pricing")]
     Pricing,
     #[at("/gallery")]
@@ -23,8 +23,8 @@ enum Route {
 fn route_switch(routes: Route) -> Html {
     match routes {
         Route::Home => html! { <Home /> },
-        Route::About => html! {
-            <AboutMe />
+        Route::Contact => html! {
+            <Contact />
         },
         Route::Gallery => html! {
             <Gallery/>
